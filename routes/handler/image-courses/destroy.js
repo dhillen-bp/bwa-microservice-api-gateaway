@@ -7,8 +7,8 @@ const api = apiAdapter(URL_SERVICE_COURSES);
 module.exports = async (req, res) => {
   try {
     const id = req.params.id;
-    const chapter = await api.delete(`/api/chapter/${id}`);
-    return res.json(chapter.data);
+    const imageCourse = await api.delete(`/api/image-courses/${id}`);
+    return res.json(imageCourse.data);
   } catch (error) {
     if (error.code === "ECONNREFUSED") {
       return res.status(500).json({
