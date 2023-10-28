@@ -31,6 +31,8 @@ module.exports = async (req, res) => {
 
       coursesData.data.prev_page_url = `${HOSTNAME}/courses?${prevPage}`;
     }
+    // Menghapus properti 'links' dari data respons
+    delete coursesData.data.links;
 
     coursesData.data.path = `${HOSTNAME}/courses`;
 
