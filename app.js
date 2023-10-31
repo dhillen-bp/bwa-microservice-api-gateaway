@@ -8,8 +8,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const coursesRouter = require("./routes/courses");
 const mediaRouter = require("./routes/media");
-const ordersRouter = require("./routes/orders");
-const paymentsRouter = require("./routes/payments");
+const ordersRouter = require("./routes/orderPayments");
 const refreshTokensRouter = require("./routes/refreshTokens");
 const mentorsRouter = require("./routes/mentors");
 const chaptersRouter = require("./routes/chapters");
@@ -18,6 +17,7 @@ const imageCoursesRouter = require("./routes/imageCourses");
 const myCoursesRouter = require("./routes/myCourses");
 const reviewsRouter = require("./routes/reviews");
 const webhookRouter = require("./routes/webhook");
+const orderPaymentsRouter = require("./routes/orderPayments");
 
 const verifyToken = require("./middlewares/verifyToken");
 
@@ -35,8 +35,7 @@ app.use("/courses", coursesRouter);
 app.use("/chapters", verifyToken, chaptersRouter);
 app.use("/lessons", verifyToken, lessonsRouter);
 app.use("/media", mediaRouter);
-app.use("/orders", ordersRouter);
-app.use("/payments", paymentsRouter);
+app.use("/orders", verifyToken, orderPaymentsRouter);
 app.use("/refresh-tokens", refreshTokensRouter);
 app.use("/mentors", verifyToken, mentorsRouter);
 app.use("/image-courses", verifyToken, imageCoursesRouter);
